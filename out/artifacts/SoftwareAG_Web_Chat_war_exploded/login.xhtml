@@ -7,11 +7,11 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:body>
+        <h2>Username: </h2>
         <h:form>
             <h:inputText binding="#{username}"/>
-            <h:commandButton value="Send" action="#{OnlineUsersList.addOnlineUser(username.value)}">
-                <f:actionListener binding="#{Navigate.Hub()}"/>
-            </h:commandButton>
+            <h:commandButton value="OK" action="#{OnlineUsersList.addOnlineUser(username.value)}"/>
+            <h:commandButton value="Login" action="#{Navigate.Hub()}"/>
         </h:form>
     </h:body>
 

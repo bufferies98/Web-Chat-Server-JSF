@@ -1,5 +1,3 @@
-package com.chat.users;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
@@ -13,9 +11,10 @@ import java.util.List;
 public class OnlineUsersList {
     List<User> userList = new ArrayList<User>();
 
-    public void addOnlineUser (String name) {
+    public String addOnlineUser (String name) {
         User user = new User(name);
         userList.add(user);
+        return "index.xhtml";
     }
 
     public List<User> getUserList() {

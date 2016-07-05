@@ -15,7 +15,10 @@
        <h1>Messages</h1>
 
        <f:view>
-           <h:outputLabel value="Hello, #{OnlineUsersList.userList.get(OnlineUsersList.userList.size() - 1).username}! "/>
+           <!-- Hardcoding last username for testing purposes, needs to be fixed !!! -->
+           <!-- <h:outputLabel value="Hello, #{OnlineUsersList.userList.get(OnlineUsersList.userList.size() - 1).username}! "/> -->
+           <!-- Hardcoding last username for testing purposes, needs to be fixed !!! -->
+
            <h:outputLabel value="Online Users"/>
            <ul>
                <c:forEach items="#{OnlineUsersList.userList}" var="usr">
