@@ -19,21 +19,21 @@
            <!-- <h:outputLabel value="Hello, #{OnlineUsersList.userList.get(OnlineUsersList.userList.size() - 1).username}! "/> -->
            <!-- Hardcoding last username for testing purposes, needs to be fixed !!! -->
 
-           <h:outputLabel value="Online Users"/>
-           <ul>
+           <h:outputLabel value="Online Users" id = "title_users"/>
+           <ul id = "users">
                <c:forEach items="#{OnlineUsersList.userList}" var="usr">
-                   <li><h:outputText value="#{usr.username}"/></li>
+                   <li id = "users_online"><h:outputText value="#{usr.username}"/></li>
                </c:forEach>
            </ul>
        </f:view>
 
-       <ul>
+       <ul id = "messages">
            <c:forEach items="#{Messages.messageList}" var="obj">
                <li><h:outputText value="#{obj}"/></li>
            </c:forEach>
        </ul>
 
-       <h:form>
+       <h:form id = "button">
             <h:inputText binding="#{msg_input}"/>
             <h:commandButton value="Send" action="#{Messages.setMessageList(msg_input.value)}"/>
        </h:form>
