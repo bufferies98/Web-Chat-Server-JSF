@@ -12,7 +12,7 @@ import java.util.List;
  */
 @ManagedBean
 @ApplicationScoped
-public class Users implements Serializable {
+public class ChatUsers implements Serializable {
     private List<String> users;
 
     @PostConstruct

@@ -1,3 +1,4 @@
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
@@ -9,8 +10,8 @@ import java.util.List;
  */
 
 @ManagedBean(name = "Messages", eager = true)
-@SessionScoped
-public class Send implements Serializable {
+@ApplicationScoped
+public class Messages implements Serializable {
     private List<String> messageList = new ArrayList<String>();
 
     public void setMessageList(String msg) {
