@@ -3,41 +3,51 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
    <h:head>
       <title>Software AG | Web Chat</title>
    </h:head>
 
-   <h:body>
-       <h:outputStylesheet library="css" name="style.css"  />
-       
+   <p:growl id="growl" showDetail="true"/>
+       <h:form id="form">
+           <p:remoteCommand name="updateList" update="users" process="@this"/>
 
-       <f:view>
-           <!-- Hardcoding last username for testing purposes, needs to be fixed !!! -->
-           <!-- <h:outputLabel value="Hello, #{OnlineUsersList.userList.get(OnlineUsersList.userList.size() - 1).username}! "/> -->
-           <!-- Hardcoding last username for testing purposes, needs to be fixed !!! -->
+           <p:fieldset id="container" legend="PrimeChat" toggleable="true">
 
-           <h:outputLabel value="Online Users" id = "title_users"/>
-           <ul id = "users">
-               <c:forEach items="#{OnlineUsersList.userList}" var="usr">
-                   <li id = "users_online"><h:outputText value="#{usr.username}"/></li>
-               </c:forEach>
-           </ul>
-       </f:view>
+               <h:panelGroup rendered="#{viewHandler.loggedIn}">
+                   <h:panelGrid columns="2" columnClasses="publicColumn,usersColumn" style="width:100%">
+                       <p:outputPanel id="public" layout="block" styleClass="ui-corner-all ui-widget-content chatlogs" />
 
-       <ul id = "messages">
-           <c:forEach items="#{Messages.messageList}" var="obj">
-               <li><h:outputText value="#{obj}"/></li>
-           </c:forEach>
-       </ul>
+                       <p:dataList id="users" var="user" value="#{viewHandler.users}" styleClass="usersList">
+                           <f:facet name="header">
+                               Users
+                           </f:facet>
 
-       <h:form id = "button">
-            <h:inputText binding="#{msg_input}"/>
-            <h:commandButton value="Send" action="#{Messages.setMessageList(msg_input.value)}"/>
-       </h:form>
-   </h:body>
+                           <!--<p:commandButton title="Chat" icon="ui-icon-comment" oncomplete="PF('pChat').show()" update=":form:privateChatContainer">
+                               <f:setPropertyActionListener value="#{user}" target="#{ViewHandler.privateUser}" />
+                           </p:commandButton> -->
+                       </p:dataList>
+                   </h:panelGrid>
 
+                   <p:separator />
 
+                   <p:inputText value="#{viewHandler.message}" styleClass="messageInput" />
+                   <p:spacer width="5" />
+                   <p:commandButton value="Send" actionListener="#{viewHandler.sendMessage}" oncomplete="$('.messageInput').val('').focus()" />
+                   <p:spacer width="5" />
+                   <p:commandButton value="Disconnect" actionListener="#{viewHandler.disconnect}" global="false" update="container" />
+               </h:panelGroup>
+
+               <h:panelGroup rendered="#{not viewHandler.loggedIn}" >
+                   Username: <p:inputText value="#{viewHandler.username}" disabled="true" />
+
+                   <p:spacer width="5" />
+                   <p:commandButton value="Login" actionListener="#{viewHandler.login}" update="container"
+                                    icon="ui-icon-person" disabled="true" />
+               </h:panelGroup>
+
+           </p:fieldset>
+        </h:form>
 </html>

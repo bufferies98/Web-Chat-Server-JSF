@@ -1,3 +1,68 @@
 ul {
     list-style:none;
 }
+body {
+    background-image: url("https://jobs.softwareag.com/sites/softwareag/images/site-logo-img.png");
+    background-repeat: no-repeat;
+
+}
+
+#title_users{
+
+    background-color: #222;
+    border-color: #080808;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    top: 0;
+    border-width: 0 0 1px;
+    border-radius: 0;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: aliceblue;
+
+
+
+display: block;
+
+}
+
+#messages{
+    margin-left: 50%;
+    margin-top: 40%;
+}
+#users{
+    position: fixed;
+    left: 225px;
+    width: 225px;
+    margin-left: -225px;
+    border: none;
+    border-radius: 0;
+    overflow-y: auto;
+    background-color: #222;
+    bottom: 0;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+    margin-top: 0px;
+    top:0px;
+
+}
+#button {
+    margin-left: 45%;
+    margin-top: 45%;
+}
+#users_online{
+    color:aliceblue;
+    font-style: italic;
+
+}
+#users_online:hover{
+    background-color: aqua;
+    color:red;
+
+}

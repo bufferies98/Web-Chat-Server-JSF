@@ -7,7 +7,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:body>
-        <h2>Username: </h2>
+        <h:outputStylesheet library="css" name="style.css"  />
+
+        <h2 id = "usernames">Username: </h2>
         <h:form>
             <h:inputText binding="#{username}"/>
             <h:commandButton value="OK" action="#{OnlineUsersList.addOnlineUser(username.value)}"/>

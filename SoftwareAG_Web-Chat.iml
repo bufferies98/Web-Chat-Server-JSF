@@ -33,5 +33,7 @@
         <jarDirectory url="file://$MODULE_DIR$/../javax.faces-api-2.2-FINAL" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="primefaces-6.0" level="project" />
+    <orderEntry type="library" name="slf4j-simple-1.7.21" level="project" />
   </component>
 </module>
