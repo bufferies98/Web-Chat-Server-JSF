@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="atmosphere-runtime-2.4.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/atmosphere-runtime-2.4.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
