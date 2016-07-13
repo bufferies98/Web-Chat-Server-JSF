@@ -83,13 +83,13 @@ public class ChatView implements Serializable {
     }
 
     public void sendGlobal() {
-       // eventBus.publish(CHANNEL + "*", username + ": " + globalMessage);
+        eventBus.publish(CHANNEL + "*", username + ": " + globalMessage);
 
         globalMessage = null;
     }
 
     public void sendPrivate() {
-       // eventBus.publish(CHANNEL + privateUser, "[PM] " + username + ": " + privateMessage);
+        eventBus.publish(CHANNEL + privateUser, "[PM] " + username + ": " + privateMessage);
 
         privateMessage = null;
     }
@@ -115,7 +115,7 @@ public class ChatView implements Serializable {
         RequestContext.getCurrentInstance().update("form:users");
 
         //push leave information
-       // eventBus.publish(CHANNEL + "*", username + " left the channel.");
+        eventBus.publish(CHANNEL + "*", username + " left the channel.");
 
         //reset state
         loggedIn = false;
