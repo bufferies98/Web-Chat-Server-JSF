@@ -15,27 +15,25 @@
        <h1>Messages</h1>
 
        <f:view>
-           <!-- Hardcoding last username for testing purposes, needs to be fixed !!! -->
-           <!-- <h:outputLabel value="Hello, #{OnlineUsersList.userList.get(OnlineUsersList.userList.size() - 1).username}! "/> -->
-           <!-- Hardcoding last username for testing purposes, needs to be fixed !!! -->
+           <h:outputLabel value="Hello, #{user.username}! "/>
 
            <h:outputLabel value="Online Users"/>
            <ul>
-               <c:forEach items="#{OnlineUsersList.userList}" var="usr">
+               <c:forEach items="#{onlineUsersList.userList}" var="usr">
                    <li><h:outputText value="#{usr.username}"/></li>
                </c:forEach>
            </ul>
        </f:view>
 
        <ul>
-           <c:forEach items="#{Messages.messageList}" var="obj">
+           <c:forEach items="#{messages.messageList}" var="obj">
                <li><h:outputText value="#{obj}"/></li>
            </c:forEach>
        </ul>
 
        <h:form>
             <h:inputText binding="#{msg_input}"/>
-            <h:commandButton value="Send" action="#{Messages.setMessageList(msg_input.value)}"/>
+            <h:commandButton value="Send" action="#{messages.setMessageList(msg_input.value)}"/>
        </h:form>
    </h:body>
 
