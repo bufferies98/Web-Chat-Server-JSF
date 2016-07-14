@@ -3,39 +3,47 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
 
-   <h:head>
-      <title>Software AG | Web Chat</title>
-   </h:head>
 
-   <h:body>
-       <h:outputStylesheet library="css" name="style.css"  />
-       <h1>Messages</h1>
+    <title>Software AG | Web Chat</title>
 
-       <f:view>
-           <h:outputLabel value="Hello, #{user.username}! "/>
+   <h:form>
+       <h:panelGroup rendered="#{chatHandler.loggedIn}">
+           <p:dataList id="users" var="user" value="#{chatUsers.users}" styleClass="usersList">
+               <f:facet name="header">
+                   Users
+               </f:facet>
+               #{user}
+               </p:dataList>
 
-           <h:outputLabel value="Online Users"/>
-           <ul>
-               <c:forEach items="#{onlineUsersList.userList}" var="usr">
-                   <li><h:outputText value="#{usr.username}"/></li>
-               </c:forEach>
-           </ul>
-       </f:view>
+               <p:dataList id="messages" var="msg" value="#{chatMessages.messages}">
+               <f:facet name="header">
+                   Messages
+               </f:facet>
+               #{msg}
+           </p:dataList>
 
-       <ul>
-           <c:forEach items="#{messages.messageList}" var="obj">
-               <li><h:outputText value="#{obj}"/></li>
-           </c:forEach>
-       </ul>
+           <h:outputLabel value="#{chatHandler.username}"/>
+           <h:inputText value="#{chatHandler.message}"/>
+           <h:commandButton value="Send" action="#{chatHandler.sendMessage}"/>
+       </h:panelGroup>
 
-       <h:form>
-            <h:inputText binding="#{msg_input}"/>
-            <h:commandButton value="Send" action="#{messages.setMessageList(msg_input.value)}"/>
-       </h:form>
-   </h:body>
+      <h:panelGroup rendered="#{not chatHandler.loggedIn}">
+          <p:growl id="growl" showDetail="true" />
+
+          <p:panel header="Growl">
+              <h:panelGrid columns="2" cellpadding="5">
+                  <h:outputLabel for="msg" value="Username: " />
+                  <h:inputText id="msg" value="#{chatHandler.username}" required="true"/>
+              </h:panelGrid>
+
+              <p:commandButton value="Login" action="#{chatHandler.login}" update="growl"/>
+          </p:panel>
+      </h:panelGroup>
+   </h:form>
 
 
 </html>
