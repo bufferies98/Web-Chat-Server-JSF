@@ -66,6 +66,7 @@ public class ChatHandler implements Serializable {
 
     public void sendMessage() {
         messages.add(getUsername(), message);
+        message = null;
     }
 
     public void login() {

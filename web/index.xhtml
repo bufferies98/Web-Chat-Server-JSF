@@ -29,6 +29,7 @@
            <h:outputLabel value="#{chatHandler.username}"/>
            <h:inputText value="#{chatHandler.message}"/>
            <h:commandButton value="Send" action="#{chatHandler.sendMessage}"/>
+           <h:commandButton value="Disconnect" action="#{chatHandler.disconnect}"/>
        </h:panelGroup>
 
       <h:panelGroup rendered="#{not chatHandler.loggedIn}">
